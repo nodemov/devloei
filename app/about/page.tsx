@@ -9,7 +9,7 @@ const fetchTodos = async () => {
     return await res.json();
 }
 
-interface Todo {
+type Todo = {
     userId: number;
     id: number;
     title: string;
@@ -17,13 +17,13 @@ interface Todo {
 }
 
 const AboutPage = async () => {
-    const data = await fetchTodos();
+    const data: Todo[] = await fetchTodos();
 
     return (
         <>
             <h1>About</h1>
             {
-                data.map((todo: Todo) => (
+                data.map((todo) => (
                     <li key={todo.id}>{todo.title}</li>
                 ))
             }
